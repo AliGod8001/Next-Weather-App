@@ -1,0 +1,20 @@
+$primary-color: #a9f8fb;
+$primary-light-color: lighten($primary-color, 15%);
+$primary-dark-color: darken($primary-color, 15%);
+$primary-subtle-color: mix(white, $primary-color, 85%);
+
+$secondary-color: #068488;
+$secondary-light-color: lighten($secondary-color, 15%);
+$secondary-dark-color: darken($secondary-color, 15%);
+$secondary-subtle-color: mix(white, $secondary-color, 85%);
+
+$light-color: #ffffff;
+$dark-color: #000000;
+
+$title-color: #444040;
+$sub-title-color: mix($light-color, $title-color, 30%);
+
+$text-color: mix($light-color, $title-color, 50%);
+$sub-text-color: mix($light-color, $title-color, 70%);
+
+$transition: all 450ms ease;

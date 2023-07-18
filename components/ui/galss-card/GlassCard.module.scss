@@ -1,0 +1,12 @@
+@import "../../../styles/variables";
+
+.card {
+    display: inline-block;
+    padding: 30px 20px;
+    min-width: 250px;
+    border-radius: 1pc;
+    background-color: rgba($light-color, 5%);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba($light-color, 50%);
+    text-align: center;
+}

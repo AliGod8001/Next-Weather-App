@@ -1,0 +1,40 @@
+@import "../../styles/variables";
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+    border-radius: 0.8pc;
+    background-color: darken($light-color, 2%);
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+        background-color: $secondary-color;
+
+        .text {
+            color: $light-color;
+        }
+
+        .city {
+            color: $primary-color;
+        }
+    }
+
+    .text {
+        font-size: 14px;
+        font-weight: 500;
+        color: $text-color;
+        transition: $transition;
+    }
+
+    .title {
+        font-size: 16px;
+        font-weight: 800;
+        color: $title-color;
+        transition: $transition;
+    }
+}

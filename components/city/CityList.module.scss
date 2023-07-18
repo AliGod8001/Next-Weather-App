@@ -1,0 +1,24 @@
+.list {
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+    max-height: 300px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 6.5px;
+        height: 2.5px;
+    }
+      
+    &::-webkit-scrollbar-thumb {
+        background: #dddddd;
+    }
+      
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}

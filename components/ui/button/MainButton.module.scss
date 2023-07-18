@@ -1,0 +1,86 @@
+@import "../../../styles/variables";
+
+.button {
+    font-family: inherit;
+    border: none;
+    outline: none;
+    padding: 12px 25px;
+    border-radius: 0.8pc;
+    border: 1px solid transparent;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 12px -20px #00000015;
+    transition: $transition;
+}
+
+.button:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.button.primary {
+    background-color: $primary-color;
+    color: #545050;
+}
+
+.button.primary:hover {
+    background-color: $primary-dark-color;
+}
+
+.button.primary-outline {
+    background-color: transparent;
+    border-color: $primary-color;
+    color: $primary-color;
+}
+
+.button.primary-outline:hover {
+    background-color: $primary-color;
+    color: #545050;
+}
+
+.button.primary-flat {
+    background-color: var(--primary-subtle-color);
+    color: $primary-dark-color;
+}
+
+.button.primary-flat:hover {
+    background-color: $primary-color;
+    color: #545050;
+}
+
+.button.secondary {
+    background-color: $secondary-color;
+    color: white;
+}
+
+.button.secondary:hover {
+    background-color: $secondary-dark-color;
+}
+
+.button.secondary-outline {
+    background-color: transparent;
+    border-color: $secondary-color;
+    color: $secondary-color;
+}
+
+.button.secondary-outline:hover {
+    background-color: $secondary-color;
+    color: white;
+}
+
+.button.secondary-flat {
+    background-color: var(--secondary-subtle-color);
+    color: $secondary-dark-color;
+}
+
+.button.secondary-flat:hover {
+    background-color: $secondary-color;
+    color: white;
+}
+
+@media only screen and (max-width: 767.98px) {
+    .button {
+        padding: 10px 25px;
+        font-size: 15px;
+    }
+}

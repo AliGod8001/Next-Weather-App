@@ -1,0 +1,62 @@
+@import "../../styles/variables";
+
+.city {
+    font-size: 25px;
+    font-weight: 600;
+    color: rgba($light-color, 60%);
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+        color: rgba($light-color, 80%);
+    }
+}
+
+.form {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.control {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+        font-size: 15px;
+        font-weight: 600;
+        color: $sub-title-color;
+    }
+
+    input {
+        outline: none;
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        padding: 10px;
+        border-bottom: 1px solid darken($light-color, 20%);
+        font-size: 16px;
+        font-weight: 500;
+        color: $title-color;
+        transition: $transition;
+
+        &:hover {
+            border-color: $primary-color;
+        }
+
+        &::placeholder {
+            font-size: 14px;
+            color: $sub-text-color;
+        }
+    }
+}
+
+.actions {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}

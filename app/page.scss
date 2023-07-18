@@ -1,0 +1,50 @@
+@import "../styles/common";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 6.5px;
+  height: 2.5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #444444;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+main:has(section.day) {
+  background-image: url("/images/background/day.jpg");
+}
+
+main:has(section.sunrise) {
+  background-image: url("/images/background/sunrise.jpg");
+}
+
+main:has(section.sunset) {
+  background-image: url("/images/background/sunset.jpg");
+}
+
+main:has(section.night) {
+  background-image: url("/images/background/night.jpg");
+}

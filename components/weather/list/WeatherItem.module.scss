@@ -1,0 +1,88 @@
+@import "../../../styles/variables";
+
+.item-wrapper {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: $transition;
+
+    &:first-child {
+        transition-delay: 150ms;
+    }
+
+    &:nth-child(2) {
+        transition-delay: 300ms;
+    }
+
+    &:nth-child(3) {
+        transition-delay: 450ms;
+    }
+
+    &:nth-child(4) {
+        transition-delay: 600ms;
+    }
+
+    &:nth-child(5) {
+        transition-delay: 750ms;
+    }
+
+    &:nth-child(6) {
+        transition-delay: 900ms;
+    }
+
+    &:nth-child(7) {
+        transition-delay: 1050ms;
+    }
+
+    &.active {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.item {
+    position: relative;
+    width: 250px;
+    padding: 10px 15px;
+    text-align: left;
+
+    .img {
+        margin-top: -40px;
+        margin-bottom: 7px;
+        margin-left: -30px;
+    }
+
+    .day {
+        display: block;
+        width: 100%;
+        font-size: 12px;
+        font-weight: 600;
+        color: rgba($light-color, 60%);
+        margin-bottom: 4px;
+    }
+
+    .weather {
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 25px;
+        color: $light-color;
+        margin-bottom: 15px;
+    }
+
+    .tempture {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        color: rgba($light-color, 40%);
+    }
+
+    .box {
+        font-size: 20px;
+        font-weight: 800;
+        color: $light-color;
+    }
+
+    .min {
+        color: rgba($light-color, 30%);
+    }
+}
