@@ -62,7 +62,7 @@ const OverlayCity = ({
     };
 
     return <>
-        <div className={styles.city} onClick={showModal}>,{city}</div>
+        <div className={styles.city} onClick={showModal}>{city}</div>
 
         <Modal title="Choose City" open={isModalOpen} footer={null}>
         <form className={styles.form}>

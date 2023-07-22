@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 
-import GetDailyForecast from '@/client/forecast/GetDailyForecast'
+import GetDailyForecast from '@/client/weather/forecast/GetDailyForecast'
+import GetHourlyForecast from '@/client/weather/forecast/GetHourlyForecast'
+import GetCurrentWeather from '@/client/weather/current/GetCurrentWeather'
 
 const getInitailStoreState = (type: LocalStorageType) => {
     if ( !localStorage.getItem(process.env.NEXT_PUBLIC_LOCAL_STORAGE_KEY!) ) {
@@ -38,6 +40,7 @@ const setInitialStoreState = (payload: LocalStorageState) => {
 }
 
 export const useUserStore = create<UserStore>()((set) => ({
+    loading: false,
     city: getInitailStoreState("city") as string,
     lat: getInitailStoreState("lat") as number,
     long: getInitailStoreState("long") as number,
@@ -56,13 +59,31 @@ export const useUserStore = create<UserStore>()((set) => ({
         })
         useUserStore.getState().getWeather()
     },
+    changePeriod: async (period: Period) => {
+        set(() => ({ period: period }))
+
+        setInitialStoreState({
+            city: useUserStore.getState().city,
+            lat: useUserStore.getState().lat,
+            long: useUserStore.getState().long,
+            period: period,
+            offset: useUserStore.getState().offset!
+        })
+
+        useUserStore.getState().getWeather()
+    },
     getWeather: async () => { 
+        set(() => ({ loading: true }))
+        const currentWeather = await GetCurrentWeather(useUserStore.getState().lat, useUserStore.getState().long)
+        set(() => ({ currentWeather: currentWeather }))
+        
         if ( useUserStore.getState().period === "daily" ) {
-            const { currentWeather, dailyHistory} = await GetDailyForecast(useUserStore.getState().lat, useUserStore.getState().long)
-            set(() => ({currentWeather: currentWeather}))
-            set(() => ({weatherHistory: dailyHistory.infos}))
+            const dailyHistory = await GetDailyForecast(useUserStore.getState().lat, useUserStore.getState().long)
+            set(() => ({ weatherHistory: dailyHistory.infos }))
         } else {
-            console.log('here')
+            const hourlyHistory = await GetHourlyForecast(useUserStore.getState().lat, useUserStore.getState().long)
+            set(() => ({ weatherHistory: hourlyHistory}))
         }
+        set(() => ({ loading: false }))
     }
 }))

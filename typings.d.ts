@@ -1,7 +1,9 @@
 interface CurrentWeather {
-    isDay: boolean,
     temp: number,
-    weatherCode: number,
+    isDay: boolean,
+    tempMin: number,
+    tempMax: number,
+    desc: string,
     windDirection: number,
     windSpeed: number
 }
@@ -22,6 +24,7 @@ interface WeatherInfo {
 type Period = "daily" | "hourly"
 
 interface UserStore {
+    loading: boolean,
     city: string,
     lat: number,
     long: number,
@@ -30,6 +33,7 @@ interface UserStore {
     weatherHistory: WeatherInfo[] | null,
     currentWeather: CurrentWeather | null,
     changeCity: (payload: ChangeCityPayload) => void,
+    changePeriod: (payload: Period) => void,
     getWeather: () => void,
 }
 

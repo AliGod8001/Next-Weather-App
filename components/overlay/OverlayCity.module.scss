@@ -1,15 +1,10 @@
 @import "../../styles/variables";
 
 .city {
-    font-size: 25px;
+    font-size: 35px;
     font-weight: 600;
-    color: rgba($light-color, 60%);
+    color: $light-color;
     cursor: pointer;
-    transition: $transition;
-
-    &:hover {
-        color: rgba($light-color, 80%);
-    }
 }
 
 .form {

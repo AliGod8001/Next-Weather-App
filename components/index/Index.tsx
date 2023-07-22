@@ -4,18 +4,20 @@ import WeatherList from "../weather/list/WeatherList";
 
 const Index = ({
     current,
-    history
+    history,
+    loading,
 } : {
     current: CurrentWeather | null,
-    history: WeatherInfo[] | null
+    history: WeatherInfo[] | null,
+    loading: boolean,
 }) => {
 
     
 
     return <>
     {
-        current && history 
-            ? 
+        current && history
+            ? loading ? <Loading /> :
             <>
                 <WeatherCurrent currentData={current} />
                 <WeatherList list={history} />

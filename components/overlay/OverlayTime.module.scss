@@ -1,0 +1,106 @@
+@import "../../styles/variables";
+
+.dn {
+    display: none;
+}
+
+.toggleWrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 0 75px 0 55px;
+    transform: translateY(-5px);
+    color: white;
+}
+  
+.toggle {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 22px;
+    background-color: #83d8ff;
+    border-radius: 84px;
+    transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.toggle:before {
+    content: ',Daily';
+    position: absolute;
+    left: -55px;
+    font-size: 18px;
+    color: $primary-color;
+}
+
+.toggle:after {
+    content: 'Hourly';
+    position: absolute;
+    right: -70px;
+    font-size: 18px;
+    color: $light-color;
+}
+
+.toggle__handler {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    top: 3px;
+    left: 3px;
+    width: 15px;
+    height: 15px;
+    background-color: $secondary-color;
+    border-radius: 50px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+    transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+transform: rotate(-45deg);
+}
+
+.toggle__handler .crater {
+    position: absolute;
+    background-color: #e8cda5;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+    border-radius: 100%;
+}
+
+.toggle__handler .crater--1 {
+    top: 18px;
+    left: 10px;
+    width: 4px;
+    height: 4px;
+}
+
+.toggle__handler .crater--2 {
+    top: 28px;
+    left: 22px;
+    width: 6px;
+    height: 6px;
+}
+  
+.toggle__handler .crater--3 {
+    top: 10px;
+    left: 25px;
+    width: 8px;
+    height: 8px;
+}
+  
+input:checked + .toggle {
+    background-color: $primary-color;
+}
+  
+input:checked + .toggle:before {
+    color: $light-color;
+}
+  
+input:checked + .toggle:after {
+    color: $primary-color;
+}
+  
+input:checked + .toggle .toggle__handler {
+    background-color: $secondary-color;
+    transform: translate3d(27px, 0, 0) rotate(0);
+}
+  
+input:checked + .toggle .toggle__handler .crater {
+    opacity: 1;
+}

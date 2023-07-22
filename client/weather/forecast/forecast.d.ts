@@ -1,5 +1,4 @@
 interface DailyForecastResponse {
-    current_weather: CurrentWeatherResponse,
     daily: Daily,
     daily_units: DailyUnits, 
     elevation: number,
@@ -9,6 +8,32 @@ interface DailyForecastResponse {
     timezone: string,
     timezone_abbreviation: string,
     utc_offset_seconds: number
+}
+
+interface HourlyForecastResponse {
+    elevation: number,
+    generationtime_ms: number,
+    hourly: Hourly,
+    hourly_units: HourlyUnits,
+    latitude: number,
+    longitude: number,
+    timezone: string,
+    timezone_abbreviation: string,
+    utc_offset_seconds: number
+}
+
+interface Hourly {
+    rain: number[]
+    temperature_2m: number[],
+    time: string[],
+    weathercode: number[]
+}
+
+interface HourlyUnits {
+    rain: string,
+    temperature_2m: strgin,
+    time: string,
+    weathercode: string
 }
 
 type Daily = {
@@ -25,13 +50,4 @@ type DailyUnits = {
     temperature_2m_min: string,
     time: string,
     weathercode: string
-}
-
-interface CurrentWeatherResponse {
-    is_day: boolean,
-    temperature: number,
-    time: string,
-    weathercode: number,
-    winddirection: number,
-    windspeed: number
 }

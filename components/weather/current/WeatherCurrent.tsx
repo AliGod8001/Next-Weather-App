@@ -1,6 +1,5 @@
 import Image from 'next/image'
 
-import useWeatherCode from '../../../hooks/use-weather-code'
 import GlassCard from '../../ui/galss-card/GlassCard'
 
 import { temptureImage, sunWindyImage, moonWindyImage } from '@/public/images'
@@ -11,8 +10,6 @@ const WeatherCurrent = ({
 } : {
     currentData: CurrentWeather
 }) => {
-    const { weather } = useWeatherCode(currentData.weatherCode)
-
     return <GlassCard className={styles.current}>
         <Image
             className={styles.img}
@@ -23,7 +20,7 @@ const WeatherCurrent = ({
             alt={`${currentData.isDay ? "sun" : "moon"} image`}
         />
         <span className={styles.text}>Today</span>
-        <span className={styles.title}>{weather}</span>
+        <span className={styles.title}>{currentData.desc}</span>
         <div className={styles["box-wrapper"]}>
             <div className={styles.box}>
                 <Image 

@@ -12,7 +12,7 @@ const convertTime = (offset: number) => {
 }
 
 const HomePage = () => {
-    const [getWeather, current, history, offset] = useUserStore(state => [state.getWeather, state.currentWeather, state.weatherHistory, state.offset])
+    const [getWeather, current, history, offset, loading] = useUserStore(state => [state.getWeather, state.currentWeather, state.weatherHistory, state.offset, state.loading])
 
     const time = convertTime(offset)
 
@@ -21,7 +21,7 @@ const HomePage = () => {
     }, [getWeather])
 
   return <section className={!current ? time.getHours() > 7 && time.getHours() < 19 ? "day": "night" : current.isDay ? "day" : "night"}>
-      <Index current={current} history={history} />
+      <Index current={current} history={history} loading={loading} />
       <Overlay />
   </section>
 }
