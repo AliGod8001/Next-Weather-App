@@ -1,6 +1,5 @@
 interface CurrentWeather {
     temp: number,
-    isDay: boolean,
     tempMin: number,
     tempMax: number,
     desc: string,

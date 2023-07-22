@@ -6,18 +6,20 @@ import { temptureImage, sunWindyImage, moonWindyImage } from '@/public/images'
 import styles from './WeatherCurrent.module.scss'
 
 const WeatherCurrent = ({
-    currentData
+    currentData,
+    isDay,
 } : {
     currentData: CurrentWeather
+    isDay: boolean,
 }) => {
     return <GlassCard className={styles.current}>
         <Image
             className={styles.img}
-            src={`/images/${currentData.isDay ? "sun" : "moon"}.png`}
+            src={`/images/${isDay ? "sun" : "moon"}.png`}
             width={80} 
             height={80}
             loading='lazy'
-            alt={`${currentData.isDay ? "sun" : "moon"} image`}
+            alt={`${isDay ? "sun" : "moon"} image`}
         />
         <span className={styles.text}>Today</span>
         <span className={styles.title}>{currentData.desc}</span>
@@ -37,11 +39,11 @@ const WeatherCurrent = ({
             </div>
             <div className={styles.box}>
                 <Image 
-                    src={currentData.isDay ? sunWindyImage : moonWindyImage}
+                    src={isDay ? sunWindyImage : moonWindyImage}
                     width={45}
                     height={45}
                     loading='lazy'
-                    alt={`${currentData.isDay ? "sun" : "moon"} windy image`}
+                    alt={`${isDay ? "sun" : "moon"} windy image`}
                 />
                 <div className={styles.content}>
                     <span className={styles.title}>Wind Speed :</span>

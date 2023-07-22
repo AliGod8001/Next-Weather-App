@@ -3,12 +3,7 @@ const GetCurrentWeather = async (lat: number, long: number) => {
 
     const data : CurrentWeatherResponse = await res.json()
 
-    const currentTime = new Date().getTime()
-    const isDay = currentTime > data.sys.sunrise && currentTime < data.sys.sunset
-
-
     const currentWeather : CurrentWeather = {
-        isDay,
         windDirection: data.wind.deg,
         windSpeed: data.wind.speed,
         temp: data.main.temp,

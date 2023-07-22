@@ -1,27 +1,32 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useUserStore } from "@/store/user-store";
+
+import UseConvertTime from "@/hooks/use-convert-time";
 
 import Index from "@/components/index/Index"
 import Overlay from "@/components/overlay/Overlay";
-
-const convertTime = (offset: number) => {
-    const offsetTime = new Date(2023, 6, 18, new Date().getUTCHours(), new Date().getUTCMinutes(), new Date().getUTCSeconds())
-    return new Date(offsetTime.getTime() + offset * 60 * 60 * 1000)
-}
+import Loading from "@/components/ui/loading/Loading";
 
 const HomePage = () => {
     const [getWeather, current, history, offset, loading] = useUserStore(state => [state.getWeather, state.currentWeather, state.weatherHistory, state.offset, state.loading])
 
-    const time = convertTime(offset)
+    const time = UseConvertTime(offset)
+    const isDay = time.getHours() > 6 && time.getHours() < 19
 
     useEffect(() => {
         getWeather()
     }, [getWeather])
 
-  return <section className={!current ? time.getHours() > 7 && time.getHours() < 19 ? "day": "night" : current.isDay ? "day" : "night"}>
-      <Index current={current} history={history} loading={loading} />
+  return <section className={isDay ? "day" : "night"}>
+      {
+        current && history
+        ? loading 
+        ? <Loading /> 
+        : <Index current={current} history={history} isDay={isDay} />
+        : <Loading />
+      }
       <Overlay />
   </section>
 }

@@ -11,15 +11,15 @@ import GetTimeOffset from '@/client/timezone/GetCurrentTime'
 import Loading from '../ui/loading/Loading'
 
 const Overlay = () => {
-    // const [loading, SetLoading] = useState<boolean>(false)
-    const [city, changeCity, offset, period, changePeriod, loading] = useUserStore(state => [state.city, state.changeCity, state.offset, state.period, state.changePeriod, state.loading])
+    const [loading, SetLoading] = useState<boolean>(false)
+    const [city, changeCity, offset, period, changePeriod] = useUserStore(state => [state.city, state.changeCity, state.offset, state.period, state.changePeriod])
 
     const changeCityClickHandler = async (payload: ChangeCityPayload) => {
-        // SetLoading(true)
+        SetLoading(true)
         const offset = await GetTimeOffset(payload.city)
         payload.offset = offset
+        SetLoading(false)
         changeCity(payload)
-        // SetLoading(false)
     }
 
     const changePeriodHandler = () => {
