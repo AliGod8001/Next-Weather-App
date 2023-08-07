@@ -16,9 +16,6 @@ const nextConfig = {
     assetPrefix: assetPrefix,
     basePath: basePath,
     output: 'export',
-    images: {
-        loader: 'imgix',
-    },
 };
   
 
