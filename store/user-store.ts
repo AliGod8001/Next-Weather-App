@@ -4,50 +4,28 @@ import GetDailyForecast from '@/client/weather/forecast/GetDailyForecast'
 import GetHourlyForecast from '@/client/weather/forecast/GetHourlyForecast'
 import GetCurrentWeather from '@/client/weather/current/GetCurrentWeather'
 
-const getInitailStoreState = (type: LocalStorageType) => {
-    if ( !localStorage.getItem(process.env.NEXT_PUBLIC_LOCAL_STORAGE_KEY!) ) {
-        setInitialStoreState({
-            city: "Paris",
-            lat: 52.52,
-            long: 13.41,
-            period: "daily",
-            offset: 2,
-        })
-    }
-
-    const item : LocalStorageState = JSON.parse(localStorage.getItem(process.env.NEXT_PUBLIC_LOCAL_STORAGE_KEY!)!)
-
-    switch (type) {
-        case "city":
-            return item.city
-    
-        case "lat":
-            return item.lat
-
-        case "long":
-            return item.long
-
-        case "period":
-            return item.period
-
-        case "offset":
-            return item.offset
-    }
-}
-
 const setInitialStoreState = (payload: LocalStorageState) => {
     localStorage.setItem(process.env.NEXT_PUBLIC_LOCAL_STORAGE_KEY!, JSON.stringify(payload))
 }
 
 export const useUserStore = create<UserStore>()((set) => ({
     loading: false,
-    city: getInitailStoreState("city") as string,
-    lat: getInitailStoreState("lat") as number,
-    long: getInitailStoreState("long") as number,
-    period: getInitailStoreState("period") as Period,
-    offset: getInitailStoreState("offset") as number,
+    city: null,
+    lat: null,
+    long: null,
+    period: null,
+    offset: null,
     currentWeather: null,
     weatherHistory: null,
+    setInitialValues: (payload: LocalStorageState) => {
+        set(() => ({
+            city: payload.city,
+            lat: payload.lat,
+            long: payload.long,
+            period: payload.period,
+            offset: payload.offset
+        }))
+    },
     changeCity: async (payload: ChangeCityPayload) => {
         set(() => ({city: payload.city, lat: payload.lat, long: payload.long, offset: payload.offset}))
         setInitialStoreState({

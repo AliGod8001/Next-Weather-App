@@ -3,6 +3,8 @@ import './page.scss'
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
+import Splash from '@/components/splash/Splash'
+
 import styles from './layout.module.scss'
 
 export default function RootLayout({
@@ -22,9 +24,11 @@ export default function RootLayout({
         <link rel="icon" type="image/webp" sizes="16x16" href="/favicon/favicon-16x16.webp" />
         <title>Next Weather App | Ali_God</title>
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
           <main className={styles.section}>
-              <section className={styles.wrapper}>{children}</section>
+              <section className={styles.wrapper}>
+                <Splash>{children}</Splash>
+              </section>
           </main>
       </body>
     </html>

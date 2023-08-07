@@ -31,6 +31,7 @@ interface UserStore {
     offset: numbr,
     weatherHistory: WeatherInfo[] | null,
     currentWeather: CurrentWeather | null,
+    setInitialValues: (payload: LocalStorageState) => void,
     changeCity: (payload: ChangeCityPayload) => void,
     changePeriod: (payload: Period) => void,
     getWeather: () => void,
